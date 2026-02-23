@@ -28,16 +28,16 @@ const Navbar = () => {
       transition={{ duration: 0.8, ease: "easeOut" as const }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-secondary/95 backdrop-blur-xl shadow-lg shadow-foreground/5 py-2"
-          : "bg-gradient-to-b from-foreground/30 to-transparent py-5"
+          ? "bg-secondary/95 backdrop-blur-xl shadow-lg shadow-foreground/5"
+          : "bg-gradient-to-b from-foreground/30 to-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#home" className="flex items-center">
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        <a href="#home" className="flex items-center -ml-2">
           <img
             src={logoPng}
             alt="Ice Realty & Management"
-            className={`h-48 md:h-56 w-[400px] md:w-[560px] object-contain object-left transition-all duration-500 ${
+            className={`h-20 md:h-24 w-auto object-contain transition-all duration-500 ${
               scrolled ? "" : "brightness-0 invert"
             }`}
           />
