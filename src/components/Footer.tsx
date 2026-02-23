@@ -1,16 +1,17 @@
-import { motion } from "framer-motion";
-import IceLogo from "./IceLogo";
+import logoPng from "@/assets/logo-gold.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary border-t border-gold/10 py-12">
+    <footer className="bg-secondary border-t border-primary/10 py-16">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <IceLogo color="gold" className="h-10 w-auto" />
-          <p className="font-body text-sm text-secondary-foreground/40 tracking-wide">
+        <div className="grid md:grid-cols-3 gap-10 items-center">
+          <div className="flex justify-center md:justify-start">
+            <img src={logoPng} alt="Ice Realty" className="h-12 w-auto" />
+          </div>
+          <p className="font-body text-sm text-secondary-foreground/40 tracking-wide text-center">
             © {new Date().getFullYear()} Ice Realty & Management. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex gap-6 justify-center md:justify-end">
             {["Privacy", "Terms", "Sitemap"].map((link) => (
               <a
                 key={link}

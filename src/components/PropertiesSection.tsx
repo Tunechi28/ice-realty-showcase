@@ -39,25 +39,22 @@ const properties = [
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.2 } },
+  visible: { transition: { staggerChildren: 0.15 } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.7, ease: "easeOut" as const },
-  },
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
 };
 
 const PropertiesSection = () => {
   return (
-    <section id="properties" className="py-24 md:py-32 bg-muted">
+    <section id="properties" className="py-28 md:py-36 bg-muted relative">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -66,16 +63,12 @@ const PropertiesSection = () => {
           <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">
             Curated Selection
           </p>
-          <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-foreground mb-6">
             Featured <span className="italic">Properties</span>
           </h2>
-          <motion.div
-            className="w-16 h-px bg-primary mx-auto"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
+          <p className="font-body text-muted-foreground max-w-lg mx-auto text-base">
+            Explore our handpicked collection of premium properties in the most sought-after locations.
+          </p>
         </motion.div>
 
         <motion.div
@@ -91,7 +84,7 @@ const PropertiesSection = () => {
               variants={cardVariants}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
-              className="group bg-card border border-border overflow-hidden hover:shadow-2xl cursor-pointer"
+              className="group bg-card rounded-lg overflow-hidden hover:shadow-2xl hover:shadow-foreground/8 cursor-pointer border border-border/50 transition-shadow duration-500"
             >
               <div className="relative overflow-hidden aspect-[4/3]">
                 <motion.img
@@ -99,40 +92,42 @@ const PropertiesSection = () => {
                   alt={property.title}
                   className="w-full h-full object-cover"
                   loading="lazy"
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ duration: 0.6 }}
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.7 }}
                 />
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-4 py-1.5 bg-primary text-primary-foreground text-xs font-body font-semibold tracking-wider uppercase">
+                  <span className="px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-body font-semibold tracking-wider uppercase backdrop-blur-sm">
                     {property.tag}
                   </span>
                 </div>
-                <div className="absolute bottom-4 right-4 w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                  <ArrowUpRight size={18} />
+                <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                  <ArrowUpRight size={16} />
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-primary font-body text-xs tracking-[0.2em] uppercase mb-1">
-                  {property.location}
-                </p>
-                <h3 className="font-display text-xl text-foreground mb-2">
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-primary font-body text-xs tracking-[0.2em] uppercase">
+                    {property.location}
+                  </p>
+                  <p className="font-display text-xl text-primary font-semibold">
+                    {property.price}
+                  </p>
+                </div>
+                <h3 className="font-display text-xl text-foreground mb-4">
                   {property.title}
                 </h3>
-                <p className="font-display text-2xl text-primary font-semibold mb-4">
-                  {property.price}
-                </p>
-                <div className="flex items-center gap-6 pt-4 border-t border-border">
+                <div className="flex items-center gap-5 pt-4 border-t border-border/60">
                   <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <BedDouble size={16} strokeWidth={1.5} />
-                    <span className="text-sm font-body">{property.beds} Beds</span>
+                    <BedDouble size={15} strokeWidth={1.5} />
+                    <span className="text-sm font-body">{property.beds}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <Bath size={16} strokeWidth={1.5} />
-                    <span className="text-sm font-body">{property.baths} Baths</span>
+                    <Bath size={15} strokeWidth={1.5} />
+                    <span className="text-sm font-body">{property.baths}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-muted-foreground">
-                    <Maximize size={16} strokeWidth={1.5} />
+                    <Maximize size={15} strokeWidth={1.5} />
                     <span className="text-sm font-body">{property.sqft} sqft</span>
                   </div>
                 </div>
