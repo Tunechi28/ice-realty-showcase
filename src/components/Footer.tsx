@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-10 items-center">
           <div className="flex justify-center md:justify-start">
-            <img src={logoPng} alt="Ice Realty" className="h-12 w-auto" />
+            <img src={logoPng} alt="Ice Realty" className="h-16 w-auto" />
           </div>
           <p className="font-body text-sm text-secondary-foreground/40 tracking-wide text-center">
             © {new Date().getFullYear()} Ice Realty & Management. All rights reserved.
