@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoPng from "@/assets/logo-gold.png";
+import logoPng from "@/assets/logo-gold-cropped.png";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -37,7 +37,7 @@ const Navbar = () => {
           <img
             src={logoPng}
             alt="Ice Realty & Management"
-            className={`h-16 w-auto transition-all duration-500 ${
+            className={`h-14 md:h-16 w-[140px] md:w-[180px] object-contain object-left transition-all duration-500 ${
               scrolled ? "" : "brightness-0 invert"
             }`}
           />
