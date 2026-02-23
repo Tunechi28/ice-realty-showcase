@@ -28,13 +28,20 @@ const services = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" as const },
-  }),
+    transition: { duration: 0.7, ease: "easeOut" as const },
+  },
 };
 
 const ServicesSection = () => {
@@ -45,8 +52,8 @@ const ServicesSection = () => {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
         >
           <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">
             What We Do
@@ -54,21 +61,29 @@ const ServicesSection = () => {
           <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4">
             Our <span className="italic">Services</span>
           </h2>
-          <div className="w-16 h-px bg-primary mx-auto" />
+          <motion.div
+            className="w-16 h-px bg-primary mx-auto"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, i) => (
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+        >
+          {services.map((service) => (
             <motion.div
               key={service.title}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className="group p-8 bg-card border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-lg"
+              variants={itemVariants}
+              className="group p-8 bg-card border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
             >
-              <div className="w-14 h-14 flex items-center justify-center border border-primary/20 text-primary mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
+              <div className="w-14 h-14 flex items-center justify-center border border-primary/20 text-primary mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 group-hover:rotate-3 group-hover:scale-110">
                 <service.icon size={24} strokeWidth={1.5} />
               </div>
               <h3 className="font-display text-xl text-foreground mb-3">
@@ -79,7 +94,7 @@ const ServicesSection = () => {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
