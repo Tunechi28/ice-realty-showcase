@@ -37,7 +37,7 @@ const Navbar = () => {
           <img
             src={logoPng}
             alt="Ice Realty & Management"
-            className={`h-14 md:h-16 w-[140px] md:w-[180px] object-contain object-left transition-all duration-500 ${
+            className={`h-16 md:h-20 w-[160px] md:w-[220px] object-contain object-left transition-all duration-500 ${
               scrolled ? "" : "brightness-0 invert"
             }`}
           />
