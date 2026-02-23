@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import IceLogo from "./IceLogo";
+import logoPng from "@/assets/logo-gold.png";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -28,13 +28,19 @@ const Navbar = () => {
       transition={{ duration: 0.8, ease: "easeOut" as const }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-secondary/95 backdrop-blur-md border-b border-gold/10 py-3"
-          : "bg-transparent py-5"
+          ? "bg-secondary/95 backdrop-blur-xl shadow-lg shadow-foreground/5 py-2"
+          : "bg-gradient-to-b from-foreground/30 to-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#home" className="flex items-center">
-          <IceLogo color={scrolled ? "gold" : "white"} className="h-12 w-auto" />
+          <img
+            src={logoPng}
+            alt="Ice Realty & Management"
+            className={`h-12 w-auto transition-all duration-500 ${
+              scrolled ? "" : "brightness-0 invert"
+            }`}
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -49,7 +55,7 @@ const Navbar = () => {
               className={`relative text-sm font-body font-medium tracking-widest uppercase transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-px after:scale-x-0 after:bg-primary after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left ${
                 scrolled
                   ? "text-secondary-foreground/70 hover:text-primary"
-                  : "text-primary-foreground/70 hover:text-primary-foreground"
+                  : "text-primary-foreground/80 hover:text-primary-foreground"
               }`}
             >
               {link.label}
@@ -60,7 +66,7 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8, duration: 0.4 }}
-            className="ml-4 px-6 py-2.5 bg-primary text-primary-foreground text-sm font-semibold tracking-wider uppercase hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+            className="ml-4 px-6 py-2.5 rounded-sm bg-primary text-primary-foreground text-sm font-semibold tracking-wider uppercase hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
           >
             Get in Touch
           </motion.a>
@@ -84,7 +90,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-secondary border-t border-gold/10 overflow-hidden"
+            className="md:hidden bg-secondary/98 backdrop-blur-xl border-t border-primary/10 overflow-hidden"
           >
             <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link, i) => (
@@ -103,7 +109,7 @@ const Navbar = () => {
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="mt-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold tracking-wider uppercase text-center"
+                className="mt-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold tracking-wider uppercase text-center rounded-sm"
               >
                 Get in Touch
               </a>
