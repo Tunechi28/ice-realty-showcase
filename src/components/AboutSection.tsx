@@ -3,10 +3,10 @@ import { useRef, useEffect, useState } from "react";
 import heroBranded from "@/assets/hero-branded.jpg";
 
 const stats = [
-  { value: 500, suffix: "+", label: "Properties Sold" },
-  { value: 15, suffix: "+", label: "Years Experience" },
+  { value: 100, suffix: "+", label: "Properties Sold" },
+  { value: 10, suffix: "+", label: "Years Experience" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
-  { value: 200, suffix: "+", label: "Units Managed" },
+  { value: 50, suffix: "+", label: "Units Managed" },
 ];
 
 const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
@@ -64,7 +64,6 @@ const AboutSection = () => {
                 transition={{ duration: 0.8 }}
               />
             </div>
-            {/* Floating stat card */}
             <motion.div
               className="absolute -bottom-8 -right-4 md:right-[-2rem] bg-card rounded-lg p-6 shadow-xl shadow-foreground/10 border border-border/50"
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
@@ -72,7 +71,7 @@ const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <p className="font-display text-3xl text-primary font-bold">15+</p>
+              <p className="font-display text-3xl text-primary font-bold">10+</p>
               <p className="font-body text-xs text-muted-foreground tracking-wider uppercase mt-1">Years of<br />Excellence</p>
             </motion.div>
           </motion.div>
@@ -95,15 +94,10 @@ const AboutSection = () => {
               at a Time
             </h2>
             <p className="font-body text-muted-foreground leading-relaxed mb-5 text-base">
-              Ice Realty & Management is a premier real estate firm dedicated to delivering
-              exceptional results for buyers, sellers, and investors. Our team of seasoned
-              professionals brings deep market knowledge and a client-first approach to every
-              transaction.
+              Ice Realty is a professional property management and real estate firm with offices in Abuja, Benin, and Lagos. We provide structured, results-driven real estate solutions designed to help property owners protect, grow, and maximize the value of their investments.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed mb-12 text-base">
-              Whether you're searching for your dream home, looking to invest, or need
-              reliable property management, we provide personalized solutions that exceed
-              expectations.
+              Our expertise spans across property sales, property management, leasing services, investment advisory, and property development, making us a comprehensive partner for landlords, investors, and developers.
             </p>
 
             {/* Stats Grid */}
