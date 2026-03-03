@@ -1,25 +1,36 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 import logoPng from "@/assets/logo-gold-cropped.png";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Properties", href: "#properties" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Services", href: "/#services" },
+  { label: "Development", href: "/#development" },
+  { label: "About", href: "/#about" },
+  { label: "Get in Touch", href: "/#contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false);
+    if (isHome && href.startsWith("/#")) {
+      const el = document.querySelector(href.replace("/", ""));
+      el?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <motion.nav
@@ -33,7 +44,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#home" className="flex items-center -ml-2">
+        <Link to="/" className="flex items-center -ml-2" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <img
             src={logoPng}
             alt="Ice Realty & Management"
@@ -41,7 +52,7 @@ const Navbar = () => {
               scrolled ? "" : "brightness-0 invert"
             }`}
           />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -49,6 +60,12 @@ const Navbar = () => {
             <motion.a
               key={link.label}
               href={link.href}
+              onClick={(e) => {
+                if (isHome && link.href.startsWith("/#")) {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }
+              }}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
@@ -61,15 +78,6 @@ const Navbar = () => {
               {link.label}
             </motion.a>
           ))}
-          <motion.a
-            href="#contact"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8, duration: 0.4 }}
-            className="ml-4 px-6 py-2.5 rounded-sm bg-primary text-primary-foreground text-sm font-semibold tracking-wider uppercase hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
-          >
-            Get in Touch
-          </motion.a>
         </div>
 
         {/* Mobile Toggle */}
@@ -97,7 +105,12 @@ const Navbar = () => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    if (isHome && link.href.startsWith("/#")) {
+                      e.preventDefault();
+                      handleNavClick(link.href);
+                    }
+                  }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
@@ -106,13 +119,6 @@ const Navbar = () => {
                   {link.label}
                 </motion.a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="mt-2 px-6 py-3 bg-primary text-primary-foreground text-sm font-semibold tracking-wider uppercase text-center rounded-sm"
-              >
-                Get in Touch
-              </a>
             </div>
           </motion.div>
         )}

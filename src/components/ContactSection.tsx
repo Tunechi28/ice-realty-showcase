@@ -3,13 +3,18 @@ import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 
 const contactInfo = [
-  { icon: Phone, label: "Phone", value: "(555) 123-4567" },
-  { icon: Mail, label: "Email", value: "info@icerealty.com" },
+  { icon: Phone, label: "Phone", value: "09152328611 | 09152328613" },
+  { icon: Mail, label: "Email", value: "hello@icerealty.ng" },
   {
     icon: MapPin,
-    label: "Office",
-    value: "123 Main Street, Suite 200\nNew York, NY 10001",
+    label: "Corporate HQ",
+    value: "4 Hassan Usman Katsina Street,\nAsokoro - Abuja FCT",
   },
+];
+
+const offices = [
+  { city: "Lagos Office", address: "Lekki Phase 1, Lagos State" },
+  { city: "Benin Office", address: "42, Ihama Road, GRA,\nBenin City, Edo State, Nigeria" },
 ];
 
 const ContactSection = () => {
@@ -27,8 +32,6 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-28 md:py-36 bg-secondary overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      
-      {/* Decorative background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/3 blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -81,6 +84,20 @@ const ContactSection = () => {
                 </div>
               </motion.div>
             ))}
+
+            {/* Additional offices */}
+            <div className="pt-4 border-t border-secondary-foreground/10 space-y-4">
+              {offices.map((office) => (
+                <div key={office.city}>
+                  <p className="font-body text-xs text-secondary-foreground/40 uppercase tracking-wider mb-1">
+                    {office.city}
+                  </p>
+                  <p className="font-body text-secondary-foreground whitespace-pre-line text-sm">
+                    {office.address}
+                  </p>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Contact Form */}

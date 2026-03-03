@@ -1,30 +1,42 @@
 import { motion } from "framer-motion";
-import { Home, Building2, Key, TrendingUp, ArrowRight } from "lucide-react";
+import { Home, Building2, Key, TrendingUp, Hammer, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const services = [
   {
     icon: Home,
-    title: "Residential Sales",
-    description: "From luxury condos to family homes, we connect buyers with properties that match their lifestyle.",
+    title: "Property Sales",
+    description: "Strategic Sales. Qualified Buyers. Seamless Closings.",
     number: "01",
+    slug: "property-sales",
   },
   {
     icon: Building2,
     title: "Property Management",
-    description: "Full-service management solutions that protect your investment and maximize returns.",
+    description: "Professional Oversight. Predictable Returns.",
     number: "02",
+    slug: "property-management",
   },
   {
     icon: Key,
     title: "Leasing Services",
-    description: "Expert tenant placement and lease management to keep your properties occupied year-round.",
+    description: "Reduced Vacancies. Reliable Tenants.",
     number: "03",
+    slug: "leasing-services",
   },
   {
     icon: TrendingUp,
     title: "Investment Advisory",
-    description: "Data-driven market insights and strategic guidance to build a profitable portfolio.",
+    description: "Smarter Decisions. Stronger Returns.",
     number: "04",
+    slug: "investment-advisory",
+  },
+  {
+    icon: Hammer,
+    title: "Property Development",
+    description: "Thoughtfully Designed. Strategically Built.",
+    number: "05",
+    slug: "property-development",
   },
 ];
 
@@ -41,7 +53,6 @@ const itemVariants = {
 const ServicesSection = () => {
   return (
     <section id="services" className="py-28 md:py-36 bg-background relative">
-      {/* Subtle top accent */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <div className="container mx-auto px-6">
@@ -70,7 +81,7 @@ const ServicesSection = () => {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -82,7 +93,6 @@ const ServicesSection = () => {
               variants={itemVariants}
               className="group relative p-8 bg-card rounded-lg border border-border/60 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 overflow-hidden"
             >
-              {/* Number watermark */}
               <span className="absolute top-4 right-4 font-display text-6xl text-border/50 group-hover:text-primary/10 transition-colors duration-500 select-none">
                 {service.number}
               </span>
@@ -97,10 +107,13 @@ const ServicesSection = () => {
                 <p className="font-body text-muted-foreground text-sm leading-relaxed mb-6">
                   {service.description}
                 </p>
-                <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <Link
+                  to={`/services/${service.slug}`}
+                  className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+                >
                   <span className="font-body text-xs font-semibold tracking-wider uppercase">Learn More</span>
                   <ArrowRight size={14} />
-                </div>
+                </Link>
               </div>
             </motion.div>
           ))}
