@@ -47,9 +47,7 @@ const DevelopmentSection = () => {
                 hidden: { opacity: 0, scale: 0.9 },
                 visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
               }}
-              className={`overflow-hidden rounded-lg cursor-pointer group ${
-                i === 0 ? "col-span-2 row-span-2" : ""
-              }`}
+              className="overflow-hidden rounded-lg cursor-pointer group"
               onClick={() => setSelectedImg(img)}
             >
               <img
