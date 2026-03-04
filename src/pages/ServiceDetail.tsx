@@ -123,6 +123,64 @@ const servicesData: Record<string, ServiceData> = {
   },
 };
 
+const DevGallery = () => {
+  const [selectedImg, setSelectedImg] = useState<string | null>(null);
+  return (
+    <>
+      <motion.h3
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+        className="font-display text-2xl text-foreground mt-12 mb-6"
+      >
+        Our Projects
+      </motion.h3>
+      <motion.div
+        className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-12"
+        initial="hidden"
+        animate="visible"
+        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+      >
+        {devImages.map((img, i) => (
+          <motion.div
+            key={i}
+            variants={{
+              hidden: { opacity: 0, scale: 0.9 },
+              visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+            }}
+            className={`overflow-hidden rounded-lg cursor-pointer group ${i === 0 ? "col-span-2 row-span-2" : ""}`}
+            onClick={() => setSelectedImg(img)}
+          >
+            <img
+              src={img}
+              alt={`Ice Realty development project ${i + 1}`}
+              className="w-full h-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+      {selectedImg && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-4 cursor-pointer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => setSelectedImg(null)}
+        >
+          <motion.img
+            src={selectedImg}
+            alt="Development project"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+      )}
+    </>
+  );
+};
+
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? servicesData[slug] : null;
