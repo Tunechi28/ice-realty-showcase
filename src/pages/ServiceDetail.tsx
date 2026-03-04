@@ -1,8 +1,21 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { ArrowLeft, CheckCircle } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import dev1 from "@/assets/dev-1.jpg";
+import dev2 from "@/assets/dev-2.jpg";
+import dev3 from "@/assets/dev-3.jpg";
+import dev4 from "@/assets/dev-4.jpg";
+import dev5 from "@/assets/dev-5.jpg";
+import dev6 from "@/assets/dev-6.jpg";
+import dev7 from "@/assets/dev-7.jpg";
+import dev8 from "@/assets/dev-8.jpg";
+import dev9 from "@/assets/dev-9.jpg";
+import dev10 from "@/assets/dev-10.jpg";
+
+const devImages = [dev6, dev9, dev7, dev10, dev1, dev4, dev3, dev8, dev5, dev2];
 
 interface ServiceData {
   title: string;
@@ -110,6 +123,64 @@ const servicesData: Record<string, ServiceData> = {
   },
 };
 
+const DevGallery = () => {
+  const [selectedImg, setSelectedImg] = useState<string | null>(null);
+  return (
+    <>
+      <motion.h3
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+        className="font-display text-2xl text-foreground mt-12 mb-6"
+      >
+        Our Projects
+      </motion.h3>
+      <motion.div
+        className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-12"
+        initial="hidden"
+        animate="visible"
+        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+      >
+        {devImages.map((img, i) => (
+          <motion.div
+            key={i}
+            variants={{
+              hidden: { opacity: 0, scale: 0.9 },
+              visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+            }}
+            className={`overflow-hidden rounded-lg cursor-pointer group ${i === 0 ? "col-span-2 row-span-2" : ""}`}
+            onClick={() => setSelectedImg(img)}
+          >
+            <img
+              src={img}
+              alt={`Ice Realty development project ${i + 1}`}
+              className="w-full h-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+      {selectedImg && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-4 cursor-pointer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => setSelectedImg(null)}
+        >
+          <motion.img
+            src={selectedImg}
+            alt="Development project"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+      )}
+    </>
+  );
+};
+
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? servicesData[slug] : null;
@@ -207,6 +278,10 @@ const ServiceDetail = () => {
           >
             {service.closing}
           </motion.p>
+
+          {slug === "property-development" && (
+            <DevGallery />
+          )}
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

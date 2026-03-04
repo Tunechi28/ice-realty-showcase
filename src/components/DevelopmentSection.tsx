@@ -1,17 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import dev1 from "@/assets/dev-1.jpg";
-import dev2 from "@/assets/dev-2.jpg";
-import dev3 from "@/assets/dev-3.jpg";
-import dev4 from "@/assets/dev-4.jpg";
-import dev5 from "@/assets/dev-5.jpg";
-import dev6 from "@/assets/dev-6.jpg";
-import dev7 from "@/assets/dev-7.jpg";
-import dev8 from "@/assets/dev-8.jpg";
-import dev9 from "@/assets/dev-9.jpg";
-import dev10 from "@/assets/dev-10.jpg";
+import prop1 from "@/assets/property-1.jpg";
+import prop2 from "@/assets/property-2.jpg";
+import prop3 from "@/assets/property-3.jpg";
 
-const images = [dev6, dev9, dev7, dev10, dev1, dev4, dev3, dev8, dev5, dev2];
+const images = [prop1, prop2, prop3];
 
 const DevelopmentSection = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
@@ -41,7 +34,7 @@ const DevelopmentSection = () => {
 
         {/* Image Grid */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
@@ -54,9 +47,7 @@ const DevelopmentSection = () => {
                 hidden: { opacity: 0, scale: 0.9 },
                 visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
               }}
-              className={`overflow-hidden rounded-lg cursor-pointer group ${
-                i === 0 ? "col-span-2 row-span-2" : ""
-              }`}
+              className="overflow-hidden rounded-lg cursor-pointer group"
               onClick={() => setSelectedImg(img)}
             >
               <img
