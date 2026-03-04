@@ -7,7 +7,7 @@ import logoPng from "@/assets/logo-gold-cropped.png";
 const navLinks = [
   { label: "Home", href: "/#home" },
   { label: "Services", href: "/#services" },
-  { label: "Development", href: "/#development" },
+  { label: "Development", href: "/services/property-development" },
   { label: "About", href: "/#about" },
   { label: "Get in Touch", href: "/#contact" },
 ];
