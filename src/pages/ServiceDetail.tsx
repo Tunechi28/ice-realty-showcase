@@ -1,5 +1,5 @@
+import React, { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useState, useRef } from "react";
 import { ArrowLeft, CheckCircle, Play, X, Target, Compass, Shield, TrendingUp } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
