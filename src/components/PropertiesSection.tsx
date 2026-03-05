@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Bath, BedDouble, Maximize, ArrowUpRight } from "lucide-react";
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
+import dev1 from "@/assets/dev-1.jpg";
+import dev6 from "@/assets/dev-6.jpg";
+import dev9 from "@/assets/dev-9.jpg";
 
 const properties = [
   {
-    image: property1,
+    image: dev1,
     title: "The Grand Loft",
     location: "Downtown District",
     price: "$1,250,000",
@@ -16,7 +16,7 @@ const properties = [
     tag: "For Sale",
   },
   {
-    image: property2,
+    image: dev6,
     title: "Skyline Penthouse",
     location: "Midtown Heights",
     price: "$2,800,000",
@@ -26,7 +26,7 @@ const properties = [
     tag: "Featured",
   },
   {
-    image: property3,
+    image: dev9,
     title: "Parkview Estate",
     location: "Westside Gardens",
     price: "$875,000",
