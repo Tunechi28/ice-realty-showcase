@@ -6,7 +6,7 @@ import dev9 from "@/assets/dev-9.jpg";
 
 const properties = [
   {
-    image: property1,
+    image: dev1,
     title: "The Grand Loft",
     location: "Downtown District",
     price: "$1,250,000",
