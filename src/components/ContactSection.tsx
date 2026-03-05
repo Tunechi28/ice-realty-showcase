@@ -13,7 +13,6 @@ const contactInfo = [
 ];
 
 const offices = [
-  { city: "Lagos Office", address: "Lekki Phase 1, Lagos State" },
   { city: "Benin Office", address: "42, Ihama Road, GRA,\nBenin City, Edo State, Nigeria" },
 ];
 

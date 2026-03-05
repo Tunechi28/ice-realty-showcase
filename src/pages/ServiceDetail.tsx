@@ -620,6 +620,11 @@ const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? servicesData[slug] : null;
 
+  // Scroll to top when navigating to a service page
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   if (!service) {
     return (
       <div className="min-h-screen bg-background">
