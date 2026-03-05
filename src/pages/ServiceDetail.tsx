@@ -160,9 +160,7 @@ const DevGallery = () => {
               hidden: { opacity: 0, y: 30, scale: 0.95 },
               visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
             }}
-            className={`overflow-hidden rounded-lg cursor-pointer group relative ${
-              i === 0 ? "col-span-2 row-span-2" : ""
-            }`}
+            className="overflow-hidden rounded-lg cursor-pointer group relative"
             onClick={() => setSelectedImg(img)}
           >
             <img
