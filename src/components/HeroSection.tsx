@@ -29,7 +29,7 @@ const HeroSection = () => {
           style={{ scale: imageScale }}
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/30 to-foreground/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/40 to-foreground/75" />
       </motion.div>
 
       {/* Decorative elements */}
