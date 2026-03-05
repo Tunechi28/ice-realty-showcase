@@ -16,7 +16,7 @@ const properties = [
     tag: "For Sale",
   },
   {
-    image: property2,
+    image: dev6,
     title: "Skyline Penthouse",
     location: "Midtown Heights",
     price: "$2,800,000",
