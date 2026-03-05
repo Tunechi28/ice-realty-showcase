@@ -5,18 +5,11 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import dev1 from "@/assets/dev-1.jpg";
-import dev2 from "@/assets/dev-2.jpg";
-import dev3 from "@/assets/dev-3.jpg";
-import dev4 from "@/assets/dev-4.jpg";
-import dev5 from "@/assets/dev-5.jpg";
 import dev6 from "@/assets/dev-6.jpg";
-import dev7 from "@/assets/dev-7.jpg";
-import dev8 from "@/assets/dev-8.jpg";
 import dev9 from "@/assets/dev-9.jpg";
-import dev10 from "@/assets/dev-10.jpg";
 import devHero from "@/assets/dev-hero.jpg";
 
-const devImages = [dev6, dev9, dev7, dev10, dev1, dev4, dev3, dev8, dev5, dev2];
+const devImages = [dev6, dev1, dev9];
 
 interface ServiceData {
   title: string;
@@ -154,7 +147,7 @@ const DevGallery = () => {
   return (
     <>
       <motion.div
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
+        className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
@@ -167,9 +160,7 @@ const DevGallery = () => {
               hidden: { opacity: 0, y: 30, scale: 0.95 },
               visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
             }}
-            className={`overflow-hidden rounded-lg cursor-pointer group relative ${
-              i === 0 ? "col-span-2 row-span-2" : ""
-            }`}
+            className="overflow-hidden rounded-lg cursor-pointer group relative"
             onClick={() => setSelectedImg(img)}
           >
             <img
