@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import prop1 from "@/assets/property-1.jpg";
-import prop2 from "@/assets/property-2.jpg";
-import prop3 from "@/assets/property-3.jpg";
+import dev1 from "@/assets/dev-1.jpg";
+import dev6 from "@/assets/dev-6.jpg";
+import dev9 from "@/assets/dev-9.jpg";
 
-const images = [prop1, prop2, prop3];
+const images = [dev1, dev6, dev9];
 const captions = ["Residential Estate, Benin", "Commercial Complex, Abuja", "Mixed-Use Development, Lagos"];
 
 const DevelopmentSection = () => {
