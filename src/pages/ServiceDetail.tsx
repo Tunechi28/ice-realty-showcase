@@ -621,7 +621,7 @@ const ServiceDetail = () => {
   const service = slug ? servicesData[slug] : null;
 
   // Scroll to top when navigating to a service page
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
