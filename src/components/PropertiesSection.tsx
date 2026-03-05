@@ -26,7 +26,7 @@ const properties = [
     tag: "Featured",
   },
   {
-    image: property3,
+    image: dev9,
     title: "Parkview Estate",
     location: "Westside Gardens",
     price: "$875,000",
