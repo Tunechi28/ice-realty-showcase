@@ -26,6 +26,11 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = encodeURIComponent(`Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:hello@icerealty.ng?subject=${subject}&body=${body}`;
   };
 
   return (
