@@ -86,17 +86,11 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex justify-center"
         >
           <a
-            href="#properties"
-            className="group px-10 py-4 rounded-sm bg-primary text-primary-foreground font-body font-semibold text-sm tracking-widest uppercase hover:bg-gold-dark transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5"
-          >
-            View Properties
-          </a>
-          <a
             href="#contact"
-            className="px-10 py-4 rounded-sm border border-primary-foreground/20 text-primary-foreground font-body font-semibold text-sm tracking-widest uppercase hover:bg-primary-foreground/10 hover:border-primary-foreground/40 transition-all duration-300 backdrop-blur-sm"
+            className="group px-10 py-4 rounded-sm bg-primary text-primary-foreground font-body font-semibold text-sm tracking-widest uppercase hover:bg-gold-dark transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5"
           >
             Book a Consultation
           </a>

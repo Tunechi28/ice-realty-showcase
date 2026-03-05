@@ -1,5 +1,5 @@
+import React, { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useState, useRef } from "react";
 import { ArrowLeft, CheckCircle, Play, X, Target, Compass, Shield, TrendingUp } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -619,6 +619,11 @@ const GenericServicePage = ({ service }: { service: ServiceData }) => (
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? servicesData[slug] : null;
+
+  // Scroll to top when navigating to a service page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!service) {
     return (
