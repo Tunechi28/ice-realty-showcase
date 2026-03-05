@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Bath, BedDouble, Maximize, ArrowUpRight } from "lucide-react";
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
+import dev1 from "@/assets/dev-1.jpg";
+import dev6 from "@/assets/dev-6.jpg";
+import dev9 from "@/assets/dev-9.jpg";
 
 const properties = [
   {
