@@ -4,12 +4,7 @@ import { Building2, Shield, Home, TrendingUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const rubyCourtImages = [
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0195.JPG.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0200.JPG.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0205.JPG.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0214.JPG.jpeg",
-];
+const rubyCourtImage = "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0195.JPG.jpeg";
 
 const features = [
   {
@@ -113,17 +108,13 @@ const Estates = () => {
               viewport={{ once: true }}
               className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="grid md:grid-cols-2 gap-1">
-                {rubyCourtImages.map((img, i) => (
-                  <div key={i} className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={img}
-                      alt={`Ruby Court ${i + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
+              <div className="aspect-[16/9] overflow-hidden">
+                <img
+                  src={rubyCourtImage}
+                  alt="Ruby Court"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
               </div>
               <div className="p-8 text-center">
                 <h3 className="font-display text-2xl md:text-3xl mb-2">Ruby Court</h3>
