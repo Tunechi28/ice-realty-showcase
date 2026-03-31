@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Play } from "lucide-react";
 
-const images = [
-  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Image+2026-03-31+at+00.14.02.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0200.JPG.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0214.JPG.jpeg",
+const heroImage = "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Image+2026-03-31+at+00.14.02.jpeg";
+const videos = [
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.04.11.mp4",
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.13.29.mp4",
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.13.56.mp4",
 ];
-const captions = ["Development Project, Benin", "Ruby Court Estate, Benin", "Ruby Court Interior, Benin"];
 
 const DevelopmentSection = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
   return (
     <section id="development" className="py-28 md:py-36 bg-muted relative overflow-hidden">
@@ -36,15 +38,38 @@ const DevelopmentSection = () => {
           </p>
         </motion.div>
 
-        {/* Image Grid */}
+        {/* Media Grid: 1 image + 3 videos */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
         >
-          {images.map((img, i) => (
+          {/* Hero Image */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 50, scale: 0.95 },
+              visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+            }}
+            whileHover={{ y: -8, transition: { duration: 0.3 } }}
+            className="overflow-hidden rounded-xl cursor-pointer group relative shadow-lg shadow-foreground/5"
+            onClick={() => setSelectedImg(heroImage)}
+          >
+            <img
+              src={heroImage}
+              alt="Ice Realty development project"
+              className="w-full h-full object-cover aspect-[4/3] group-hover:scale-110 transition-transform duration-1000 ease-out"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <p className="font-body text-primary-foreground text-sm tracking-wide">Development Project, Benin</p>
+            </div>
+          </motion.div>
+
+          {/* Videos */}
+          {videos.map((vid, i) => (
             <motion.div
               key={i}
               variants={{
@@ -52,19 +77,25 @@ const DevelopmentSection = () => {
                 visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
               }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="overflow-hidden rounded-xl cursor-pointer group relative shadow-lg shadow-foreground/5"
-              onClick={() => setSelectedImg(img)}
+              className="overflow-hidden rounded-xl group relative shadow-lg shadow-foreground/5 aspect-[4/3]"
             >
-              <img
-                src={img}
-                alt={`Ice Realty development project ${i + 1}`}
-                className="w-full h-full object-cover aspect-[4/3] group-hover:scale-110 transition-transform duration-1000 ease-out"
-                loading="lazy"
+              <video
+                src={vid}
+                className="w-full h-full object-cover"
+                muted
+                loop
+                playsInline
+                autoPlay
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                <p className="font-body text-primary-foreground text-sm tracking-wide">{captions[i]}</p>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent pointer-events-none" />
+              <button
+                onClick={() => setPlayingVideo(vid)}
+                className="absolute inset-0 flex items-center justify-center cursor-pointer"
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Play className="w-6 h-6 text-primary-foreground ml-1" />
+                </div>
+              </button>
             </motion.div>
           ))}
         </motion.div>
@@ -86,7 +117,7 @@ const DevelopmentSection = () => {
         </motion.div>
       </div>
 
-      {/* Lightbox */}
+      {/* Image Lightbox */}
       {selectedImg && (
         <motion.div
           className="fixed inset-0 z-50 bg-foreground/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
@@ -101,6 +132,27 @@ const DevelopmentSection = () => {
             initial={{ scale: 0.85, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          />
+        </motion.div>
+      )}
+
+      {/* Video Lightbox */}
+      {playingVideo && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-foreground/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => setPlayingVideo(null)}
+        >
+          <motion.video
+            src={playingVideo}
+            className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
+            controls
+            autoPlay
+            initial={{ scale: 0.85, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            onClick={(e) => e.stopPropagation()}
           />
         </motion.div>
       )}
