@@ -76,6 +76,10 @@ const ForSaleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const listing = slug ? allListings[slug] : undefined;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   if (!listing) return <Navigate to="/for-sale" replace />;
 
   return (
