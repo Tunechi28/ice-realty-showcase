@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import ServiceDetail from "./pages/ServiceDetail";
 import Estates from "./pages/Estates";
 import ForSale from "./pages/ForSale";
+import ForSaleDetail from "./pages/ForSaleDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
