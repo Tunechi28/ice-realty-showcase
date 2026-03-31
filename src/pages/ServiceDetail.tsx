@@ -163,8 +163,8 @@ const DevGallery = () => {
       </motion.div>
 
       {/* Video grid */}
-      <div className="grid md:grid-cols-2 gap-4">
-        {devVideos.slice(1).map((vid, i) => (
+      <div className="grid md:grid-cols-3 gap-4">
+        {devVideos.map((vid, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 30 }}
