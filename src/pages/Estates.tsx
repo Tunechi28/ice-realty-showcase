@@ -106,7 +106,7 @@ const Estates = () => {
           </h2>
           <div className="w-16 h-px bg-primary mx-auto mb-12" />
 
-          <Link to="/for-sale" className="block max-w-5xl mx-auto group">
+          <Link to="/for-sale/ruby-court" className="block max-w-5xl mx-auto group">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
