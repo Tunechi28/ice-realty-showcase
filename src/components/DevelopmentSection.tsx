@@ -38,15 +38,38 @@ const DevelopmentSection = () => {
           </p>
         </motion.div>
 
-        {/* Image Grid */}
+        {/* Media Grid: 1 image + 3 videos */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
         >
-          {images.map((img, i) => (
+          {/* Hero Image */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 50, scale: 0.95 },
+              visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+            }}
+            whileHover={{ y: -8, transition: { duration: 0.3 } }}
+            className="overflow-hidden rounded-xl cursor-pointer group relative shadow-lg shadow-foreground/5"
+            onClick={() => setSelectedImg(heroImage)}
+          >
+            <img
+              src={heroImage}
+              alt="Ice Realty development project"
+              className="w-full h-full object-cover aspect-[4/3] group-hover:scale-110 transition-transform duration-1000 ease-out"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <p className="font-body text-primary-foreground text-sm tracking-wide">Development Project, Benin</p>
+            </div>
+          </motion.div>
+
+          {/* Videos */}
+          {videos.map((vid, i) => (
             <motion.div
               key={i}
               variants={{
@@ -54,19 +77,25 @@ const DevelopmentSection = () => {
                 visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
               }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="overflow-hidden rounded-xl cursor-pointer group relative shadow-lg shadow-foreground/5"
-              onClick={() => setSelectedImg(img)}
+              className="overflow-hidden rounded-xl group relative shadow-lg shadow-foreground/5 aspect-[4/3]"
             >
-              <img
-                src={img}
-                alt={`Ice Realty development project ${i + 1}`}
-                className="w-full h-full object-cover aspect-[4/3] group-hover:scale-110 transition-transform duration-1000 ease-out"
-                loading="lazy"
+              <video
+                src={vid}
+                className="w-full h-full object-cover"
+                muted
+                loop
+                playsInline
+                autoPlay
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                <p className="font-body text-primary-foreground text-sm tracking-wide">{captions[i]}</p>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent pointer-events-none" />
+              <button
+                onClick={() => setPlayingVideo(vid)}
+                className="absolute inset-0 flex items-center justify-center cursor-pointer"
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Play className="w-6 h-6 text-primary-foreground ml-1" />
+                </div>
+              </button>
             </motion.div>
           ))}
         </motion.div>
