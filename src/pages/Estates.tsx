@@ -4,12 +4,7 @@ import { Building2, Shield, Home, TrendingUp } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const rubyCourtImages = [
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0195.JPG.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0200.JPG.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0205.JPG.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0214.JPG.jpeg",
-];
+const rubyCourtImage = "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0195.JPG.jpeg";
 
 const features = [
   {
