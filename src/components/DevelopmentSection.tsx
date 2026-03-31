@@ -12,6 +12,7 @@ const videos = [
 
 const DevelopmentSection = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
 
   return (
     <section id="development" className="py-28 md:py-36 bg-muted relative overflow-hidden">
