@@ -117,7 +117,7 @@ const DevelopmentSection = () => {
         </motion.div>
       </div>
 
-      {/* Lightbox */}
+      {/* Image Lightbox */}
       {selectedImg && (
         <motion.div
           className="fixed inset-0 z-50 bg-foreground/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
@@ -132,6 +132,27 @@ const DevelopmentSection = () => {
             initial={{ scale: 0.85, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          />
+        </motion.div>
+      )}
+
+      {/* Video Lightbox */}
+      {playingVideo && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-foreground/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => setPlayingVideo(null)}
+        >
+          <motion.video
+            src={playingVideo}
+            className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
+            controls
+            autoPlay
+            initial={{ scale: 0.85, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            onClick={(e) => e.stopPropagation()}
           />
         </motion.div>
       )}
