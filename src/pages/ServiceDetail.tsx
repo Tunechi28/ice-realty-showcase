@@ -4,19 +4,15 @@ import { ArrowLeft, CheckCircle, Play, X, Target, Compass, Shield, TrendingUp } 
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import dev1 from "@/assets/dev-1.jpg";
-import dev2 from "@/assets/dev-2.jpg";
-import dev3 from "@/assets/dev-3.jpg";
-import dev4 from "@/assets/dev-4.jpg";
-import dev5 from "@/assets/dev-5.jpg";
-import dev6 from "@/assets/dev-6.jpg";
-import dev7 from "@/assets/dev-7.jpg";
-import dev8 from "@/assets/dev-8.jpg";
-import dev9 from "@/assets/dev-9.jpg";
-import dev10 from "@/assets/dev-10.jpg";
-import devHero from "@/assets/dev-hero.jpg";
+const devHeroImg = "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Image+2026-03-31+at+00.14.02.jpeg";
 
-const devImages = [dev6, dev9, dev7, dev10, dev1, dev4, dev3, dev8, dev5, dev2];
+const devVideos = [
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.04.11.mp4",
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.13.29.mp4",
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.13.56.mp4",
+];
+
+const devImages = [devHeroImg];
 
 interface ServiceData {
   title: string;
@@ -149,68 +145,46 @@ const philosophyCards = [
 
 /* ── Gallery with lightbox ── */
 const DevGallery = () => {
-  const [selectedImg, setSelectedImg] = useState<string | null>(null);
-
   return (
-    <>
+    <div className="space-y-6">
+      {/* Hero image */}
       <motion.div
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="overflow-hidden rounded-xl"
       >
-        {devImages.map((img, i) => (
-          <motion.div
-            key={i}
-            variants={{
-              hidden: { opacity: 0, y: 30, scale: 0.95 },
-              visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-            }}
-            className={`overflow-hidden rounded-lg cursor-pointer group relative ${
-              i === 0 ? "col-span-2 row-span-2" : ""
-            }`}
-            onClick={() => setSelectedImg(img)}
-          >
-            <img
-              src={img}
-              alt={`Ice Realty development project ${i + 1}`}
-              className="w-full h-full object-cover aspect-[4/3] group-hover:scale-110 transition-transform duration-1000 ease-out"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </motion.div>
-        ))}
+        <img
+          src={devHeroImg}
+          alt="Ice Realty development project"
+          className="w-full aspect-[16/9] object-cover"
+          loading="lazy"
+        />
       </motion.div>
 
-      {/* Lightbox */}
-      {selectedImg && (
-        <motion.div
-          className="fixed inset-0 z-50 bg-foreground/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setSelectedImg(null)}
-        >
-          <motion.button
-            className="absolute top-6 right-6 text-primary-foreground/70 hover:text-primary transition-colors z-10"
-            initial={{ opacity: 0, rotate: -90 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            transition={{ delay: 0.2 }}
+      {/* Video grid */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {devVideos.slice(1).map((vid, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className="overflow-hidden rounded-xl"
           >
-            <X size={28} />
-          </motion.button>
-          <motion.img
-            src={selectedImg}
-            alt="Development project"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          />
-        </motion.div>
-      )}
-    </>
+            <video
+              src={vid}
+              className="w-full aspect-video object-cover"
+              controls
+              muted
+              playsInline
+              preload="metadata"
+            />
+          </motion.div>
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -234,12 +208,12 @@ const VideoShowcase = () => {
     >
       <video
         ref={videoRef}
-        src="/videos/dev-showcase.mp4"
+        src={devVideos[0]}
         className="w-full aspect-video object-cover"
         controls={playing}
         muted
         playsInline
-        poster={devHero}
+        poster={devHeroImg}
       />
       {!playing && (
         <div
@@ -275,7 +249,7 @@ const PropertyDevelopmentPage = ({ service }: { service: ServiceData }) => {
       <section ref={heroRef} className="relative h-[85vh] flex items-end overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <motion.img
-            src={devHero}
+            src={devHeroImg}
             alt="Ice Realty development aerial view"
             className="w-full h-full object-cover"
             style={{ scale: heroScale }}
