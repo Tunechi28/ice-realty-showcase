@@ -4,19 +4,15 @@ import { ArrowLeft, CheckCircle, Play, X, Target, Compass, Shield, TrendingUp } 
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import dev1 from "@/assets/dev-1.jpg";
-import dev2 from "@/assets/dev-2.jpg";
-import dev3 from "@/assets/dev-3.jpg";
-import dev4 from "@/assets/dev-4.jpg";
-import dev5 from "@/assets/dev-5.jpg";
-import dev6 from "@/assets/dev-6.jpg";
-import dev7 from "@/assets/dev-7.jpg";
-import dev8 from "@/assets/dev-8.jpg";
-import dev9 from "@/assets/dev-9.jpg";
-import dev10 from "@/assets/dev-10.jpg";
-import devHero from "@/assets/dev-hero.jpg";
+const devHeroImg = "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Image+2026-03-31+at+00.14.02.jpeg";
 
-const devImages = [dev6, dev9, dev7, dev10, dev1, dev4, dev3, dev8, dev5, dev2];
+const devVideos = [
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.04.11.mp4",
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.13.29.mp4",
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.13.56.mp4",
+];
+
+const devImages = [devHeroImg];
 
 interface ServiceData {
   title: string;
