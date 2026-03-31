@@ -271,7 +271,7 @@ const PropertyDevelopmentPage = ({ service }: { service: ServiceData }) => {
       <section ref={heroRef} className="relative h-[85vh] flex items-end overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <motion.img
-            src={devHero}
+            src={devHeroImg}
             alt="Ice Realty development aerial view"
             className="w-full h-full object-cover"
             style={{ scale: heroScale }}
