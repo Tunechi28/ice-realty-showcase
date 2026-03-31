@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import dev1 from "@/assets/dev-1.jpg";
-import dev6 from "@/assets/dev-6.jpg";
-import dev9 from "@/assets/dev-9.jpg";
 
-const images = [dev1, dev6, dev9];
-const captions = ["Residential Estate, Benin", "Commercial Complex, Abuja", "Mixed-Use Development, Lagos"];
+const images = [
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Image+2026-03-31+at+00.14.02.jpeg",
+  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0200.JPG.jpeg",
+  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0214.JPG.jpeg",
+];
+const captions = ["Development Project, Benin", "Ruby Court Estate, Benin", "Ruby Court Interior, Benin"];
 
 const DevelopmentSection = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
