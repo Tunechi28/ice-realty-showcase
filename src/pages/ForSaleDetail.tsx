@@ -92,14 +92,7 @@ const ForSaleDetail = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
             <div className="container mx-auto">
-              <Link
-                to="/for-sale"
-                className="inline-flex items-center gap-2 text-primary-foreground/60 font-body text-sm tracking-wider uppercase mb-4 hover:text-primary transition-colors"
-              >
-                <ArrowLeft size={16} />
-                All Listings
-              </Link>
-              <p className="text-primary font-body tracking-[0.3em] uppercase text-sm mb-2">For Sale</p>
+              
               <h1 className="font-display text-3xl md:text-5xl text-primary-foreground mb-2">{listing.title}</h1>
               <p className="text-primary-foreground/80 font-body">{listing.location}</p>
             </div>
