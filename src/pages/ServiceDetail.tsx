@@ -235,7 +235,7 @@ const VideoShowcase = () => {
         controls={playing}
         muted
         playsInline
-        poster={devHero}
+        poster={devHeroImg}
       />
       {!playing && (
         <div
