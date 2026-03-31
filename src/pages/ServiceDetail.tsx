@@ -230,7 +230,7 @@ const VideoShowcase = () => {
     >
       <video
         ref={videoRef}
-        src="/videos/dev-showcase.mp4"
+        src={devVideos[0]}
         className="w-full aspect-video object-cover"
         controls={playing}
         muted
