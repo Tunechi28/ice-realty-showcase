@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Play } from "lucide-react";
 
-const images = [
-  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Image+2026-03-31+at+00.14.02.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0200.JPG.jpeg",
-  "https://icerealty-ruby-court.s3.us-east-2.amazonaws.com/IMG_0214.JPG.jpeg",
+const heroImage = "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Image+2026-03-31+at+00.14.02.jpeg";
+const videos = [
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.04.11.mp4",
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.13.29.mp4",
+  "https://icerealty-development.s3.us-east-2.amazonaws.com/WhatsApp+Video+2026-03-31+at+00.13.56.mp4",
 ];
-const captions = ["Development Project, Benin", "Ruby Court Estate, Benin", "Ruby Court Interior, Benin"];
 
 const DevelopmentSection = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
