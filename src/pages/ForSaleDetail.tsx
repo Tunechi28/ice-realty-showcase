@@ -167,11 +167,6 @@ const ForSaleDetail = () => {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 p-4 bg-card rounded-lg">
-                <p className="font-body text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">Residents' lounge</span> for relaxation and social gatherings
-                </p>
-              </div>
             </motion.div>
           </div>
         </div>
