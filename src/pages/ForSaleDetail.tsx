@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Dumbbell, Car, Waves, ShieldCheck, Zap, MapPin } from "lucide-react";
+import { Dumbbell, Car, Waves, ShieldCheck, Zap, MapPin, Sofa } from "lucide-react";
 import { useParams, Navigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
