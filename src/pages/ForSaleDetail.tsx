@@ -39,6 +39,7 @@ const allListings: Record<string, {
       { icon: Car, text: "Well-paved roads and drainage system" },
       { icon: ShieldCheck, text: "24/7 security in a gated environment" },
       { icon: MapPin, text: "Mini mart for everyday convenience" },
+      { icon: Dumbbell, text: "Residents' lounge for relaxation and social gatherings" },
     ],
     power: "Enjoy reliable electricity with connection to the GRA (Hand A) feeder, known for its consistent power supply in Benin City.",
     locationAdvantage: "Situated in Etete, GRA, this property offers easy access to major roads, top schools, business hubs, and lifestyle centers — making it ideal for both homeowners and investors.",
@@ -166,11 +167,6 @@ const ForSaleDetail = () => {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 p-4 bg-card rounded-lg">
-                <p className="font-body text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">Residents' lounge</span> for relaxation and social gatherings
-                </p>
-              </div>
             </motion.div>
           </div>
         </div>
